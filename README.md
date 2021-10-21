@@ -1,0 +1,2 @@
+# practice_node
+关于node环境已经一些对象的使用方法的练习
