@@ -1,4 +1,5 @@
 var fs = require('fs');
+var path = require('path');
 
 // // 异步打开文件
 // fs.open('input.txt', 'a', function (err, fd) {
@@ -68,8 +69,9 @@ var fs = require('fs');
 //   // });
 // });
 
-// // 读取文件
-// fs.readFile('input.txt', 'utf-8',function (err, data) {
+// // 异步读取文件
+// fs.readFile('new_input.txt', 'utf-8',function (err, data) {
+//   console.log('异步读取文件');
 //   // 读取文件
 //   if (err) {
 //     throw err;
@@ -77,6 +79,14 @@ var fs = require('fs');
 //   // 读取文件成功
 //   console.log(data);
 // });
+// // 同步读取文件
+// try {
+//   console.log('同步读取文件');
+//   const readFile = fs.readFileSync('new_input1.txt', 'utf-8');
+//   console.log(readFile);
+// } catch (err) {
+//   console.log(err);
+// }
 
 // // 写入文件内容（如果文件不存在会创建一个文件）
 // fs.writeFile('test.txt', '我是新写入的内容1111', function (err) {
@@ -91,6 +101,7 @@ var fs = require('fs');
 //     }
 //     console.log(data);
 //   });
+// });
 
 // // 写入文件内容（如果文件不存在会创建一个文件）
 // // 设置flag为a追加内容到文件中
@@ -108,12 +119,15 @@ var fs = require('fs');
 //   });
 // });
 
-// 异步获取文件信息
-// fs.stat('test.js', function (err, stats) {
+// // 异步获取文件信息
+// fs.stat('fnTest.js', function (err, stats) {
 //   if (err) {
 //     return console.log(err);
 //   }
 //   console.log(stats.isFile());
+//   console.log(stats.isDirectory());
+//   console.log(stats.isSymbolicLink());
+//   console.log(stats.size);
 // });
 
 // // 异步截取文件
@@ -183,6 +197,9 @@ var fs = require('fs');
 //   }
 //   console.log(files);
 // });
+// fs.readdirSync('./test').map(filename => {
+//   console.log(path.join('./test', filename));
+// });
 
 // // 删除目录
 // fs.rmdir('./test1', function (err) {
@@ -191,3 +208,58 @@ var fs = require('fs');
 //   }
 //   console.log('目录删除成功');
 // });
+
+// // 使用fs-extra依赖进行目录删除
+// var fsextra = require('fs-extra');
+
+// fsextra.remove('./test1', err => {
+//   console.log(err);
+// });
+
+// // 测试open方法
+// fs.open('./new_input.txt', 'a', function (err, fd) {
+//   if (err) {
+//     console.log(err);
+//     return;
+//   }
+
+//   console.log(fd);
+
+//   fs.close(fd, function (err) {
+//     if (err) {
+//       console.log(err);
+//       return;
+//     }
+
+//     console.log('文件关闭成功');
+//   });
+// });
+
+// // 重命名文件夹
+// fs.rename(__dirname + '/testNew', __dirname + '/test', err => {
+//   if (err) {
+//     return console.log(err);
+//   }
+
+//   console.log('完成');
+// });
+
+// // 使用fs-extra拷贝文件
+// var fse = require('fs-extra');
+
+// fse.copy(__dirname +　'/test' , __dirname + '/testCopy', err => {
+//   if (err) {
+//     return console.log(err);
+//   }
+
+//   console.log('拷贝完成');
+// });
+// // 相对路径删除不了，需要使用绝对路径
+// fse.remove(__dirname + '/testCopy', err => {
+//   if (err) return console.log(err);
+
+//   console.log('文件删除成功');
+// });
+
+
+

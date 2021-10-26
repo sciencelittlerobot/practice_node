@@ -23,6 +23,8 @@
 // 引入http模块
 var http = require('http');
 
+console.log(http.METHODS);
+
 // 1、创建Server
 var server = http.createServer();
 
