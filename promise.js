@@ -100,10 +100,10 @@
 // });
 
 
-// async和await
+// // async和await
 // const doSomethingAsync = () => {
 //   return new Promise(resolve => {
-//     setTimeout(() => resolve('做些事情'), 3000);
+//     setTimeout(() => resolve('做些事情'), 0);
 //   });
 // }
 // const doSomething = async () => {

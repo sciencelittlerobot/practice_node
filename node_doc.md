@@ -105,7 +105,9 @@
 * 搭建可以兼容es6的环境
 * 使用express处理服务请求
 * 使用axios进行ajax请求
-* 
+* 使用router
+* 引入vue
+* 项目的目录有：index、login、
 
 
 ## fs.open(path, flag, mode)
